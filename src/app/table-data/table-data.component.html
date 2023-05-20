@@ -1,0 +1,43 @@
+	<div class="search-box">
+    <input type="text" [(ngModel)]="searchText">
+    <button>Search</button>
+    <div class="age-dropdown">
+      <select name="" id="" #mySelect (change)="selectedAge(+(mySelect.value))">
+        <option value="">Select Age</option>
+        <option value="20">0-20</option>
+        <option value="40">20-40</option>
+        <option value="60">40-60</option>
+        <option value="80">60-80</option>
+      </select>
+    </div>
+    <button class="reset" (click)="resetData()">Reset</button>
+  </div>
+
+
+  <div class="main">
+		<table class="table">
+			<thead>
+				<tr>
+					<th colspan="1">Id</th>
+					<th>Employee Name</th>
+					<th class="salary">Employee Salary<button (click)="AssendingSort()">Assending</button><button (click)="DesendingSort()">Desending</button></th>
+					<th>Age</th>
+					<th>Profile Image</th>
+				</tr>
+			</thead>
+			<tbody>
+        <ng-container *ngFor="let item of EmplyeeDetails | filter : searchText">
+				<tr>
+					<td data-name="">{{item.id}}</td>
+					<td data-name="">{{item.employee_name}}</td>
+					<td data-name="Product Name :"> {{item.employee_salary}}</td>
+					<td data-name="price :">{{item.employee_age}}</td>
+          <td><img src="" alt=""></td>
+				</tr>
+      </ng-container>
+			</tbody>
+		</table>
+	</div>
+  <div class="alert" [class.visible]="isVisible" *ngIf="isVisible">
+    Api Failed
+  </div>
